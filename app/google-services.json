@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "635771607678",
+    "project_id": "makerseduapp",
+    "storage_bucket": "makerseduapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635771607678:android:85c246efa319ad2e5a962f",
+        "android_client_info": {
+          "package_name": "com.test.makers_edu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635771607678-gbriinnuk91r1q25f87681ad5do04cp9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.makers_edu_app",
+            "certificate_hash": "a28f87a28eb09c8625329d87b8f0869cdd91a934"
+          }
+        },
+        {
+          "client_id": "635771607678-0ds1bvv3bomp88ou1sb1qlf69bn6cmuo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7O8UWzrt8ltVqyVFyQ09kMXBXHV6o2Ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635771607678-0ds1bvv3bomp88ou1sb1qlf69bn6cmuo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
