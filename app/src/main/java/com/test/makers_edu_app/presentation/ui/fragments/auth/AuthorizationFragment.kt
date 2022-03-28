@@ -3,6 +3,7 @@ package com.test.makers_edu_app.presentation.ui.fragments.auth
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -72,11 +73,12 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                 forgetPassword(dialogView.findViewById<EditText>(R.id.etPasswordEmail))
                 countTimer(dialogView.findViewById<TextView>(R.id.tvCountTimer),dialogView.findViewById<TextView>(R.id.tvResent))
             }
-
             dialogView.findViewById<TextView>(R.id.tvResent).setOnClickListener {
                     forgetPassword(dialogView.findViewById(R.id.etPasswordEmail))
 
             }
+            //builder.setNegativeButton("close", DialogInterface.OnClickListener { _, _ -> })
+
 
             builder.create().show()
         }
