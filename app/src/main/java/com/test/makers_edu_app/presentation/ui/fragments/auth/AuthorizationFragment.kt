@@ -3,13 +3,15 @@ package com.test.makers_edu_app.presentation.ui.fragments.auth
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -24,17 +26,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.api.LogDescriptor
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.test.makers_edu_app.R
 import com.test.makers_edu_app.databinding.FragmentAuthorizationBinding
+import com.test.makers_edu_app.databinding.FragmentDialogBinding
+import kotlin.math.log
 
 
 class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     private val binding: FragmentAuthorizationBinding by viewBinding()
+    private val binding2: FragmentDialogBinding by viewBinding()
     private lateinit var googleClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +50,6 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initGmail()
         initEditText()
         resetPassword()
@@ -60,14 +66,19 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
         binding.tvRecover.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Forgot password")
-            val view = layoutInflater.inflate(R.layout.dialog_forget_password, null)
-            val username = view.findViewById<EditText>(R.id.etEmail)
-            builder.setView(view)
-            builder.setPositiveButton("Reset", DialogInterface.OnClickListener { _, _ ->
-                forgetPassword(username)
-            })
-            builder.setNegativeButton("close", DialogInterface.OnClickListener { _, _ -> })
-            builder.show()
+            val dialogView = layoutInflater.inflate(R.layout.fragment_dialog, null)
+            builder.setView(dialogView)
+            dialogView.findViewById<Button>(R.id.btnSendLink).setOnClickListener {
+                forgetPassword(dialogView.findViewById<EditText>(R.id.etPasswordEmail))
+                countTimer(dialogView.findViewById<TextView>(R.id.tvCountTimer),dialogView.findViewById<TextView>(R.id.tvResent))
+            }
+
+            dialogView.findViewById<TextView>(R.id.tvResent).setOnClickListener {
+                    forgetPassword(dialogView.findViewById(R.id.etPasswordEmail))
+
+            }
+
+            builder.create().show()
         }
     }
 
@@ -81,11 +92,11 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
             return
         }
         else {
-            auth.sendPasswordResetEmail(username.text.toString())
+            auth.sendPasswordResetEmail(username.text.toString().trim())
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(context,
-                            "Password reset link sent "+task.exception!!.message.toString(),
+                            "Password reset link sent ",
                             Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(
@@ -98,6 +109,18 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
         }
     }
 
+    private fun countTimer(tv : TextView, tv2 : TextView) {
+        object : CountDownTimer(30000,1000){
+            override fun onTick(p0: Long) {
+                tv.text = ""+p0 / 1000
+            }
+            override fun onFinish() {
+                tv2.visibility = View.VISIBLE
+            }
+        }.start()
+    }
+
+
     private fun initEditText() {
         binding.btnSignIn.setOnClickListener {
             if (binding.etMailSignIn.text.toString().isEmpty() || binding.etPasswordSignIn.text
@@ -109,6 +132,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                 auth.signInWithEmailAndPassword(binding.etMailSignIn.text.toString(), binding
                     .etPasswordSignIn.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful) {
+
                         findNavController().navigate(R.id.mainFragment)
                     } else {
                         Toast.makeText(requireContext(),

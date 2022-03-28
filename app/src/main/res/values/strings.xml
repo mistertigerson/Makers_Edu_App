@@ -27,5 +27,6 @@
     <string name="add_certificate_and_diploms_photo_rus">Добавьте фото сертификатов/дипломов</string>
     <string name="add_photo_rus">Добавить фото</string>
     <string name="save">Сохранить</string>
+    <string name="resend">повторно отправить</string>
 
 </resources>
