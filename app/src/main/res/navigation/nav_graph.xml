@@ -41,9 +41,8 @@
         android:label="main"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" >
-        </action>
+            android:id="@+id/action_mainFragment_to_detailsFragment2"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/educationFragment"
@@ -51,19 +50,14 @@
         android:label="education"
         tools:layout="@layout/fragment_education" />
     <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.test.makers_edu_app.presentation.ui.fragments.main.details.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <argument
-            android:name="title"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
-    <fragment
         android:id="@+id/secondRegistrationFragment"
         android:name="com.test.makers_edu_app.presentation.ui.fragments.secondRegistration.SecondRegistrationFragment"
         android:label="fragment_second_registration"
         tools:layout="@layout/fragment_second_registration" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.test.makers_edu_app.presentation.ui.fragments.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 
 </navigation>
