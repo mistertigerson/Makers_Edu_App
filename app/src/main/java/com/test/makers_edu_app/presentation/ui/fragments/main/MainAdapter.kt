@@ -13,7 +13,6 @@ class MainAdapter(private val clickOnPlaylist2: ClickOnPlaylist2) :
 
     private val list: ArrayList<MainModel> = arrayListOf()
     private lateinit var binding: MainItemBinding
-    var pos by Delegates.notNull<Int>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setList(list: ArrayList<MainModel>) {
@@ -29,7 +28,6 @@ class MainAdapter(private val clickOnPlaylist2: ClickOnPlaylist2) :
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.onBind(list[position])
-        pos = holder.absoluteAdapterPosition
     }
 
     override fun getItemCount(): Int {
@@ -47,7 +45,7 @@ class MainAdapter(private val clickOnPlaylist2: ClickOnPlaylist2) :
             binding.tvTitle.text = mainModel.title
 
             binding.root.setOnClickListener {
-                clickOnPlaylist2.onClick(mainModel, pos)
+                clickOnPlaylist2.onClick(mainModel, absoluteAdapterPosition)
             }
             binding.btnBuy.setOnClickListener {
                 clickOnPlaylist2.clickBtn()
