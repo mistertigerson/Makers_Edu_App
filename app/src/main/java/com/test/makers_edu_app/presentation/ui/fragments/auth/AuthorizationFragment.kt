@@ -39,10 +39,8 @@ import kotlin.math.log
 
 class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     private val binding: FragmentAuthorizationBinding by viewBinding()
-    private val binding2: FragmentDialogBinding by viewBinding()
     private lateinit var googleClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +64,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     private fun resetPassword() {
         binding.tvRecover.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Forgot password")
+          //  builder.setTitle("Forgot password?")
             val dialogView = layoutInflater.inflate(R.layout.fragment_dialog, null)
             builder.setView(dialogView)
             dialogView.findViewById<Button>(R.id.btnSendLink).setOnClickListener {
@@ -75,7 +73,6 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
             }
             dialogView.findViewById<TextView>(R.id.tvResent).setOnClickListener {
                     forgetPassword(dialogView.findViewById(R.id.etPasswordEmail))
-
             }
             //builder.setNegativeButton("close", DialogInterface.OnClickListener { _, _ -> })
 
@@ -185,7 +182,6 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                     findNavController().navigate(R.id.mainFragment)
                 } else {
                     Log.e(TAG,"Google signIn error" + task.exception?.message.toString())
-
                     Toast.makeText(requireContext(),
                         "Error ", Toast.LENGTH_SHORT).show()
                 }
