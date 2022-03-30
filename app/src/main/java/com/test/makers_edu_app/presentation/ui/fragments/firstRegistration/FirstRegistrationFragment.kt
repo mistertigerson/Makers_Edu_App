@@ -37,7 +37,6 @@ class FirstRegistrationFragment : Fragment(R.layout.fragment_first_registration)
 
         binding.btnGmail.setOnClickListener {
             googleSignUp()
-
         }
     }
 
@@ -136,6 +135,7 @@ class FirstRegistrationFragment : Fragment(R.layout.fragment_first_registration)
                         requireContext(),
                         "AuthError ", Toast.LENGTH_SHORT
                     ).show()
+                    updateUI(null)
                 }
             }
     }
