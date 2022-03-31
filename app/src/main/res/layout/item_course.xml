@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardMaxElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivCourses"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/imageview"
+                android:src="@drawable/ic_course" />
+
+            <TextView
+                android:id="@+id/tvCoursesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/ivCourses"
+                android:text="@string/tv_title_courses_rus"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitlePriceCourses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCoursesTitle"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="35dp"
+                android:text="@string/tv_title_price_courses_rus"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCoursesTitle"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="35dp"
+                android:layout_toEndOf="@id/tvTitlePriceCourses"
+                android:text="@string/tv_price"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCoursesTitle"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/tv_description_rus"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvPayOrFreeInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescription"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/ivCourses"
+                android:text="@string/tv_pay_or_free_information_rus"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

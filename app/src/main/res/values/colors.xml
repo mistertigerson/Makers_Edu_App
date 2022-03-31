@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#878787</color>
     <color name="transparent">#00878787</color>
+    <color name="background_card_view_course">#CCC8C8</color>
+    <color name="btn_background">#FFE500</color>
 </resources>

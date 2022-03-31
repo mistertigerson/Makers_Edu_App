@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.test.makers_edu_app.extensions.loadImage
+import com.test.makers_edu_app.data.extensions.loadImage
 import com.test.makers_edu_app.R
 import com.test.makers_edu_app.presentation.ui.fragments.secondRegistration.model.ModelImg
 

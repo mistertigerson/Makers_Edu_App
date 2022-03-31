@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/firstRegistrationFragment">
+    app:startDestination="@id/accountFragment">
 
     <fragment
         android:id="@+id/firstRegistrationFragment"
@@ -52,7 +52,7 @@
         tools:layout="@layout/fragment_education" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.test.makers_edu_app.presentation.ui.fragments.main.details.DetailsFragment"
+        android:name="com.test.makers_edu_app.presentation.ui.fragments.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <argument
@@ -65,5 +65,15 @@
         android:name="com.test.makers_edu_app.presentation.ui.fragments.secondRegistration.SecondRegistrationFragment"
         android:label="fragment_second_registration"
         tools:layout="@layout/fragment_second_registration" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.test.makers_edu_app.presentation.ui.fragments.account.course.CourseFragment"
+        android:label="fragment_course"
+        tools:layout="@layout/fragment_course" />
+    <fragment
+        android:id="@+id/editAccountFragment"
+        android:name="com.test.makers_edu_app.presentation.ui.fragments.account.EditAccountFragment"
+        android:label="fragment_edit_account"
+        tools:layout="@layout/fragment_edit_account" />
 
 </navigation>
